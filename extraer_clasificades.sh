@@ -27,6 +27,7 @@ Porcentaje=20
 let div=100/$Porcentaje
 
 # Query a la db, lista files y clase
+# el query "esquiva" las categorias 7629, 7630, etc, porque son las categorias de los albumes de ejemplo de set de imágenes MGCD
 QRY="select i.path
           , CASE t.name 
                  WHEN 'Cumulus' THEN '1_cumulus'
