@@ -69,7 +69,6 @@ echo "mkdir -p $DestTest/{1_cumulus,2_altocumulus,3_cirrus,4_clearsky,5_stratocu
 source $cmdlist
 
 #Copia Porcentaje de files a train y test
-#find $DestTodes -type f -exec dirname {} + | uniq -c | while read n d;do echo "Directory:$d Files:$n";let i=0;let um=$n/$div;echo $n,$um;find $d -type f | while read file;do let i++;if [ $i -gt $um ]; then cp $file $DestTrain`echo $d|sed 's/^.*\//\//g'`; else cp $file $DestTest`echo $d|sed 's/^.*\//\//g'`/; fi;done;echo "done1";done;echo "done2"
 find $DestTodes -type f -exec dirname {} + | uniq -c | while read n d;do let i=0;let um=$n/$div;find $d -type f | while read file;do let i++;if [ $i -gt $um ]; then cp $file $DestTrain`echo $d|sed 's/^.*\//\//g'`; else cp $file $DestTest`echo $d|sed 's/^.*\//\//g'`/; fi;done;done;
 
 #Output de cantidades
